@@ -1,5 +1,5 @@
 {
-  "name": "react-router-relay",
+  "name": "react-router-relay-forcefetch",
   "version": "0.13.5",
   "description": "Relay integration for React Router",
   "files": [

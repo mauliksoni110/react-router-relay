@@ -39,12 +39,16 @@ export default class RelayRouterContext extends React.Component {
   };
 
   render() {
+    const lastRoute = this.props.routes[this.props.routes.length - 1];
+    const forceFetch = lastRoute.forceFetch && !global.__reactRouterRelayForceFetchRoutes[lastRoute.path];
+    global.__reactRouterRelayForceFetchRoutes[lastRoute.path] = lastRoute.forceFetch && true;
     return (
       <Relay.Renderer
         {...this.props}
         Container={this.queryAggregator}
         render={this.renderCallback}
         queryConfig={this.queryAggregator.queryConfig}
+        forceFetch={forceFetch}
       />
     );
   }

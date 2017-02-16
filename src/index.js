@@ -4,6 +4,8 @@ import RelayRouterContext from './RelayRouterContext';
 import RouteContainer from './RouteContainer';
 import getRouteQueries from './utils/getRouteQueries';
 
+global.__reactRouterRelayForceFetchRoutes = {};
+
 export default {
   renderRouterContext: (child, props) => (
     <RelayRouterContext {...props}>
