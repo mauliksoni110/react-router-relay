@@ -40,8 +40,9 @@ export default class RelayRouterContext extends React.Component {
 
   render() {
     const lastRoute = this.props.routes[this.props.routes.length - 1];
-    const forceFetch = lastRoute.forceFetch && !global.__reactRouterRelayForceFetchRoutes[lastRoute.path];
-    global.__reactRouterRelayForceFetchRoutes[lastRoute.path] = lastRoute.forceFetch && true;
+    const params = Object.values(this.props.params).join(',');
+    const forceFetch = lastRoute.forceFetch && !global.__reactRouterRelayForceFetchRoutes[lastRoute.path + params];
+    global.__reactRouterRelayForceFetchRoutes[lastRoute.path + params] = lastRoute.forceFetch && true;
     return (
       <Relay.Renderer
         {...this.props}
